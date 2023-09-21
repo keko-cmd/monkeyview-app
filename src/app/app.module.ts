@@ -12,6 +12,7 @@ import { WishlistModalComponent } from './body/wishlist/wishlist-modal/wishlist-
 import { ResenhasBodyComponent } from './body/resenhas/resenhas-body/resenhas-body.component';
 import { ResenhasCardComponent } from './body/resenhas/resenhas-card/resenhas-card.component';
 import { ResenhasModalComponent } from './body/resenhas/resenhas-modal/resenhas-modal.component';
+import { SobreNosotrosComponent } from './body/sobre-nosotros/sobre-nosotros.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ResenhasModalComponent } from './body/resenhas/resenhas-modal/resenhas-
     WishlistModalComponent,
     ResenhasBodyComponent,
     ResenhasCardComponent,
-    ResenhasModalComponent
+    ResenhasModalComponent,
+    SobreNosotrosComponent
   ],
   imports: [
     BrowserModule

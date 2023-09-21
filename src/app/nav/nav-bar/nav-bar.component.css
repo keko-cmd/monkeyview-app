@@ -1,3 +1,26 @@
 nav{
-    background-color: #FB4B4E;
+    background-color: #C6C7C4;
+}
+
+a {
+    color: #846A6A !important; 
+}
+
+button{
+    margin-left: 500px;
+}
+
+@media only screen and (max-width: 1160px){
+button{
+    margin-left: 0%;
+}
+}
+
+button:hover{
+    background-color: #EEF0F2;
+}
+
+.nav-color:hover{
+    background-color: #EEF0F2;
+    border-radius: 10px;
 }
