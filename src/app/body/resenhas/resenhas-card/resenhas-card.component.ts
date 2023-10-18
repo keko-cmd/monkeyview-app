@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PeliculasService } from 'src/app/services/peliculas.service';
 
 @Component({
   selector: 'app-resenhas-card',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./resenhas-card.component.css']
 })
 export class ResenhasCardComponent {
+
+  constructor(public movieService : PeliculasService){}
 
 }

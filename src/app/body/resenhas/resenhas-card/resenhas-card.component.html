@@ -1,1 +1,30 @@
-<p>resenhas-card works!</p>
+<div class="container container-fluid mb-5">
+  <div class="card" *ngFor="let movie of movieService.movieArray">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-6">
+          <div>
+            ID: {{movie._id}}  
+          </div>
+          <div>
+            Email: {{movie.email}}  
+          </div>
+          <div>
+            Estado: {{movie.status}}
+          </div>
+          <div class="card-body">
+            <h4 class="card-title mb-3 ">Pelicula: {{movie.name}} </h4>
+            <h5 class="card-subtitle mb-3">Comentario: </h5>
+            <p class="card-text"> {{movie.comments}}</p>
+          </div>
+          <button class="" (click)="movieService.deleteMovie(movie._id)" class="btn btn-primary">Borrar</button>
+        </div>
+        <div class=" col-6 right">
+          <div>Rating: {{movie.rating}}</div>
+          <img class="card-img" height="200"
+            src="{{movie.img}}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
