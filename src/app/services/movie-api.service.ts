@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
 import { MovieModelAPI } from '../interface/movie-model-api';
+import { enviorment } from 'src/enviorment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MovieAPIService {
 
+
+export class MovieAPIService {
+  
   constructor() {
     this.getMoviesApi();
    }
+
+  
 
   options: any ={
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NTZjNDljZjMzYjA0OWNjNDhlMDY1MzYwNDJhMWJjZCIsInN1YiI6IjY1MWIwMjRiOWQ1OTJjMDBjOGMzZjJhNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Wc80xTQQ1V3kjbCao7HSgwk_pbtjUfblBWrYaRK_fxM'
+      Authorization: enviorment.API_KEY,
     }
   };
 
