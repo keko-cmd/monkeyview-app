@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ResenhasModel } from 'src/app/models/resenhas-model';
-import { PeliculasService } from 'src/app/services/peliculas.service';
+import { MovieRegisterService } from 'src/app/services/movieRegister.service';
 
 @Component({
   selector: 'app-resenhas-form',
@@ -8,7 +8,7 @@ import { PeliculasService } from 'src/app/services/peliculas.service';
   styleUrls: ['./resenhas-form.component.css']
 })
 
-export class ResenhasFormComponent {
+export class ResenhasFormComponent implements OnInit {
   name: string = '';
   email: string = '';
   rating: number[] = [1, 2, 3 ,4, 5];
@@ -16,11 +16,9 @@ export class ResenhasFormComponent {
   comments: string = '';
   
 //Constructor calls the service 
-constructor(public peliculasService : PeliculasService){}
+constructor(public peliculasService : MovieRegisterService){}
 
-ngOnInit() {
 
-}
 
 appendModel(e: any){
   
@@ -34,6 +32,10 @@ appendModel(e: any){
   this.email = '';
   this.ratingSelected = 0;
   this.comments = '';
+}
+
+ngOnInit() {
+
 }
 }
 

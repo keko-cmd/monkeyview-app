@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
-import { BodyModule } from './body/body.module';
-import { BodyComponent } from './body/body.component';
+import { NavBarComponent } from './nav/nav-bar.component';
+import { AppRoutingModule } from './app.routing.module';
 
 
 @NgModule({
@@ -14,9 +12,9 @@ import { BodyComponent } from './body/body.component';
   ],
   imports: [
     BrowserModule,
-    BodyModule
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

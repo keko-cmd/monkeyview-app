@@ -4,10 +4,14 @@ import { ResenhasModel } from '../models/resenhas-model';
 @Injectable({
   providedIn: 'root'
 })
-export class PeliculasService {
 
+
+
+
+export class MovieRegisterService {
+  constructor() {   
+  }
   movieArray: ResenhasModel[] = [];
-
 
   addMovie(movie: ResenhasModel){
     //Appends the object to the service obj array
@@ -24,7 +28,4 @@ export class PeliculasService {
 
   }
 
-
-
-  constructor() { }
 }

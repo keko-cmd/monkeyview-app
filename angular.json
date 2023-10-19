@@ -69,8 +69,10 @@
               "browserTarget": "monkeyview-app:build:production"
             },
             "development": {
-              "browserTarget": "monkeyview-app:build:development"
+              "browserTarget": "monkeyview-app:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
+
           },
           "defaultConfiguration": "development"
         },

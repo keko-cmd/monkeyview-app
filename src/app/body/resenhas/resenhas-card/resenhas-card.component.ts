@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
-import { PeliculasService } from 'src/app/services/peliculas.service';
+import { Component, OnInit } from '@angular/core';
+import { MovieRegisterService } from 'src/app/services/movieRegister.service';
 
 @Component({
   selector: 'app-resenhas-card',
   templateUrl: './resenhas-card.component.html',
   styleUrls: ['./resenhas-card.component.css']
 })
-export class ResenhasCardComponent {
+export class ResenhasCardComponent implements OnInit{
 
-  constructor(public movieService : PeliculasService){}
+  constructor(public movieService : MovieRegisterService){
+    
+  }
+  ngOnInit() {
+  }
 
 }
+
+
