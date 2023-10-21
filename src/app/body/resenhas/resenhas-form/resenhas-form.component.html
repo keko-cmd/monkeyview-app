@@ -1,27 +1,39 @@
+<!-- <div class="container container-fluid">
+  <form  > 
+    //*ngIf="apiService.movieSelectedlist.length != 0"
 
-<div class="container container-fluid">
-<form (submit)="appendModel($event)">
-  <div class="form-group">
-    <label for="movieName">Nombre Pelicula:</label>
-    <input type="text" name="name" [(ngModel)]="name" class="form-control" value='{{name}}' id="movieName" placeholder="e.g. Taxi Driver">
-  </div>
-  <div class="form-group">
-    <label for="movieEmail">Correo:</label>
-    <input type="email" name="email" [(ngModel)]="email" class="form-control" id="movieEmail" placeholder="name@example.com">
-  </div>
-  <div class="form-group">
-    <label for="movieRate">Rating: </label>
-    <select class="form-control" id="movieRate" name="rating" [(ngModel)]="ratingSelected">
-      <option selected value="">Seleccione una opcion...</option>
-      <option *ngFor="let number of rating" value="{{number}}">{{number}}</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="movieComment">Comentarios:</label>
-    <textarea class="form-control" id="movieComment" placeholder="Ingrese sus comentarios" rows="4" name="comments" [(ngModel)]="comments"></textarea>
-  </div>
-  <div class="pt-3">
-  <button type="submit" class="btn btn-primary">Agregar {{name}}</button>
-</div>
-</form>
-</div>
+
+
+    <div *ngFor="let list of apiService.movieSelectedlist">
+      <div *ngIf="list.id == apiService.movieSelect.id">
+        <div >
+          <div class="form-group">
+            <label for="movieName">Nombre Pelicula: </label>
+            <input type="text" name="name" [(ngModel)]="model.title" disabled class="form-control" value='{{list.title}}'
+              id="movieName" placeholder="{{list.title}}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="movieEmail">Correo:</label>
+          <input type="email" name="email" [(ngModel)]="model.email" class="form-control" id="movieEmail"
+            placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label for="movieRate">Rating: </label>
+          <select class="form-control" id="movieRate" name="rating" [(ngModel)]="model.rating">
+            <option selected value="">Seleccione una opcion...</option>
+            <option *ngFor="let number of ratingArray" value="{{number}}">{{number}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="movieComment">Comentarios:</label>
+          <textarea class="form-control" id="movieComment" placeholder="Ingrese sus comentarios" rows="4"
+            name="comments" [(ngModel)]="model.comentarios"></textarea>
+        </div>
+        <div class="pt-3">
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div> -->

@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resenhas-body.component.css']
 })
 export class ResenhasBodyComponent implements OnInit {
-  constructor(){ console.log("resenhas");}
   ngOnInit(){
    
   }

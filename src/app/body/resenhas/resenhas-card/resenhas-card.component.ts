@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieRegisterService } from 'src/app/services/movieRegister.service';
+import { MovieAPIService } from 'src/app/services/movie-api.service';
 
 @Component({
   selector: 'app-resenhas-card',
@@ -8,10 +8,22 @@ import { MovieRegisterService } from 'src/app/services/movieRegister.service';
 })
 export class ResenhasCardComponent implements OnInit{
 
-  constructor(public movieService : MovieRegisterService){
+  constructor(public movieApiService: MovieAPIService){
     
   }
   ngOnInit() {
+    console.log(this.movieApiService.movieSelectedlist)
+  }
+
+  // movieSelectedlist: movieApiService.
+
+  deleteMovie(id: number) {
+    for (let movie of this.movieApiService.movieSelectedlist) {
+      if (movie.id === id) {
+        let index = this.movieApiService.movieSelectedlist.indexOf(movie);
+        this.movieApiService.movieSelectedlist.splice(index, 1);
+      }
+    }
   }
 
 }

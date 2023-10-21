@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PeliculasCardsComponent } from './body/peliculas/peliculas-cards.component';
-import { PeliculasModule } from './modules/peliculas/peliculas.module';
 
 
 
@@ -16,8 +15,8 @@ const routes: Routes = [
         loadChildren: () => import('./modules/resenhas/resenhas-body.module').then(m => m.ResenhasBodyModule)
       },
       {
-        path: 'pendientes-ver',
-        loadChildren: () => import('./modules/watchlist/watchlist.module').then(m => m.WatchlistModule) 
+        path: 'vistos',
+        loadChildren: () => import('./modules/lista-vistos/listavistos.module').then(m => m.ListaVistoModule) 
       },
       {
       path: 'sobre-nosotros',

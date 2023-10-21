@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PeliculasCardsComponent } from 'src/app/body/peliculas/peliculas-cards.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -9,7 +11,7 @@ import { PeliculasCardsComponent } from 'src/app/body/peliculas/peliculas-cards.
     PeliculasCardsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, HttpClientModule, FormsModule
   ],exports: [PeliculasCardsComponent]
 })
 export class PeliculasModule { }

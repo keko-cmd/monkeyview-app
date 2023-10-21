@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import { ResenhasModel } from '../models/resenhas-model';
+import { ResenhasModel } from '../interface/resenhas-model';
+// import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+// import { Observable } from 'rxjs';
+// import { enviorment } from 'src/enviorment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 
-
-
 export class MovieRegisterService {
+  // baseURL = enviorment.API_KEY; private http: HttpClient
   constructor() {   
   }
+  
   movieArray: ResenhasModel[] = [];
 
   addMovie(movie: ResenhasModel){
@@ -18,14 +22,10 @@ export class MovieRegisterService {
     this.movieArray.push(movie);  
    };
 
-  deleteMovie(id: number) {
-    for (let movie of this.movieArray) {
-      if (movie._id === id) {
-        let index = this.movieArray.indexOf(movie);
-        this.movieArray.splice(index, 1);
-      }
-    }
+  //  crearPelicula(movieReviewed :ResenhasModel): Observable<ResenhasModel>{
+  //   return this.http.post<ResenhasModel>(this.baseURL + '/', movieReviewed)
+  //  };
 
-  }
+   
 
 }

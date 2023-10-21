@@ -1,28 +1,24 @@
-<div class="container container-fluid mb-5">
-  <div class="card" *ngFor="let movie of movieService.movieArray">
+<div class="container container-fluid mb-5" *ngIf="movieApiService">
+  <div class="card" *ngFor="let movie of movieApiService.movieSelectedlist">
     <div class="card-header">
       <div class="row">
         <div class="col-6">
           <div>
-            ID: {{movie._id}}  
-          </div>
-          <div>
-            Email: {{movie.email}}  
-          </div>
-          <div>
-            Estado: {{movie.status}}
+            ID: {{movie.id}}  
           </div>
           <div class="card-body">
-            <h4 class="card-title mb-3 ">Pelicula: {{movie.name}} </h4>
-            <h5 class="card-subtitle mb-3">Comentario: </h5>
-            <p class="card-text"> {{movie.comments}}</p>
+            <h4 class="card-title mb-3 ">Pelicula: {{movie.title}} </h4>
+            <h5 class="card-subtitle mb-3">Descipcion: </h5>
+            <p class="card-text"> {{movie.overview}}</p>
           </div>
-          <button class="" (click)="movieService.deleteMovie(movie._id)" class="btn btn-primary">Borrar</button>
+          <button class="" (click)="deleteMovie(movie.id)" class="btn btn-primary">Borrar</button>
+          <button class=""  class="btn btn-primary">Hacer Resena</button>
+          <!-- (click)="getMoviesModelByID(movie.id)" -->
         </div>
         <div class=" col-6 right">
-          <div>Rating: {{movie.rating}}</div>
-          <img class="card-img" height="200"
-            src="{{movie.img}}">
+          <div>Fecha: {{movie.release_date}}</div>
+          <img class="card-img img-thumbnail"
+            src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
         </div>
       </div>
     </div>

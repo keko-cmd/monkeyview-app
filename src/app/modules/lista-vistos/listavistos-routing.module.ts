@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WatchlistCardsComponent } from 'src/app/body/watchlist/watchlist-cards.component';
+import { ListaVistoComponent } from 'src/app/body/lista-vistos/lista-vistos.component';
 
 const routes: Routes = [
 {
   path: '',
-  component: WatchlistCardsComponent
+  component: ListaVistoComponent
 }
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
 imports: [RouterModule.forChild(routes)],
 exports: [RouterModule]
 })
-export class WatchlistRoutingModule { }
+export class ListaVistoRoutingModule { }

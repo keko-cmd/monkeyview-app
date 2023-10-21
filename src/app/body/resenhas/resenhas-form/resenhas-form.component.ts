@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ResenhasModel } from 'src/app/models/resenhas-model';
-import { MovieRegisterService } from 'src/app/services/movieRegister.service';
+import { ResenhasModel } from 'src/app/interface/resenhas-model';
+import { ListadoVistoService } from 'src/app/services/listavisto.service';
+import { MovieAPIService } from 'src/app/services/movie-api.service';
 
 @Component({
   selector: 'app-resenhas-form',
@@ -9,34 +10,35 @@ import { MovieRegisterService } from 'src/app/services/movieRegister.service';
 })
 
 export class ResenhasFormComponent implements OnInit {
-  name: string = '';
-  email: string = '';
-  rating: number[] = [1, 2, 3 ,4, 5];
-  ratingSelected: number = 0;
-  comments: string = '';
+
   
 //Constructor calls the service 
-constructor(public peliculasService : MovieRegisterService){}
-
-
-
-appendModel(e: any){
-  
-  e.preventDefault();
-
-  //Pushes form values to service as a Model
-  this.peliculasService.addMovie(new ResenhasModel(this.name.valueOf(), this.email.valueOf(), this.ratingSelected.valueOf(), this.comments.valueOf()));
-  
-  //Clear form values
-  this.name = '';
-  this.email = '';
-  this.ratingSelected = 0;
-  this.comments = '';
-}
+constructor(public apiService: MovieAPIService, public listaVisto: ListadoVistoService){}
 
 ngOnInit() {
-
-}
 }
 
+ratingArray: number[] = [1, 2, 3, 5,5]
 
+model: ResenhasModel = {
+  comentarios: '',
+  email: '',
+  rating: 0,
+  backdrop_path: '',
+  id: 0,
+  title: '',
+  original_title: '',
+  overview: '',
+  poster_path: '',
+  popularity: 0,
+  release_date: ''
+}
+
+onSubmit(){
+  // this.apiService.crearPelicula(this.model).subscribe(
+  //   (response:ResenhasModel) => console.log(response)
+  // );
+        console.log(this.model)
+}
+
+}

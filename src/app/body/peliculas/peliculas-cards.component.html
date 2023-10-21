@@ -1,19 +1,19 @@
 
-<div class="container">
-  <div class="card m-5 shadow mb-3" *ngFor="let movie of movieApi.movies">
-    <img class="img card-img-top shadow" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}"
-      alt="{{movie.title}} Post">
+
+  <div class="container">
+  <div class="card m-5 shadow mb-3" *ngFor="let movie of moviesArray">
+      <img class="img card-img-top shadow" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt=" Post">
     <div class="card-body">
-      <h5 class="card-title">{{movie.title}}</h5>
+      <h5 class="card-title">{{movie.title}}: {{movie.release_date}}</h5>
       <div class="border border-light-subtle rounded shadow-sm">
         <h6 class="card-header">Descripción: </h6>
         <p class="card-text">
         <div class="overflow-auto p-3 bg-gradient" style="max-width: 100%; max-height: 150px;">
           <p>{{movie.overview}}</p>
         </div>
-
       </div>
-      <button class="btn btn-primary m-3" (click)="movieApi.getIDMovie(movie.id)">Agregar Pelicula</button>
+      <button class="btn btn-primary m-3" (click)="addWatchlist(movie.id)" > Agregar Pelicula</button>
+      
     </div>
   </div>
 </div>

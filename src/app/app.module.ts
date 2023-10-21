@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav/nav-bar.component';
 import { AppRoutingModule } from './app.routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { PeliculasModule } from './modules/peliculas/peliculas.module';
 
 
 @NgModule({
@@ -12,7 +16,12 @@ import { AppRoutingModule } from './app.routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    
+        HttpClientModule,
+        FormsModule,
+        CommonModule,
+        AppRoutingModule,
+        PeliculasModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
