@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data } from '@angular/router';
 import { Observable, map } from 'rxjs';
+import { DAO } from 'src/app/DTO/DTO-model';
 import { MovieModelAPI, PagesApi } from 'src/app/interface/movie-model-api';
 import { MovieAPIService } from 'src/app/services/movie-api.service';
 import Swal from 'sweetalert2';
@@ -19,7 +20,7 @@ export class PeliculasCardsComponent implements OnInit {
 
   }
 
-  moviesArray: MovieModelAPI[] = [];
+  
 
   ngOnInit(): void {
     
@@ -28,12 +29,13 @@ export class PeliculasCardsComponent implements OnInit {
    
   }
 
+
 listMovies(){
 
   this.movieApi.getMoviesApi().pipe(
     map((res) => res.results), // extract data attribut
     map((data) => {
-      return data.map((aProd) => {   //map the product and take only id, name, price
+      return data.map((aProd) => {   //map the main object to its subobject 
         return {
           backdrop_path: aProd.backdrop_path,
           id: aProd.id,
@@ -46,18 +48,19 @@ listMovies(){
         };
       });
     })).subscribe((movie) => {
-      this.moviesArray = movie
+      this.movieApi.daoAccess.setMovieList(movie)
       // console.log(this.moviesArray)
     }); 
 
 }
 
   addWatchlist(id: number) {
-
-    for (let movie of this.moviesArray) {
+  
+    for (let movie of this.movieApi.daoAccess.getMoviesList()) {
 
       if (movie.id === id) {
-        this.movieApi.movieSelectedlist.push(movie);
+        this.movieApi.daoAccess.pushSelectedMovie(movie);
+        console.log(this.movieApi.daoAccess.getSelectedMovie());
       }
     }
     Swal.fire({
@@ -68,8 +71,6 @@ listMovies(){
       backdrop: false,
       timer: 1200
     })
-
-    console.log(this.movieApi.movieSelectedlist);
   }
 
 

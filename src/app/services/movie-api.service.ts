@@ -3,6 +3,7 @@ import { enviorment } from 'src/enviorment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { MovieModelAPI, PagesApi } from '../interface/movie-model-api';
+import { DAO } from '../DTO/DTO-model';
 
 
 @Injectable({
@@ -14,13 +15,14 @@ import { MovieModelAPI, PagesApi } from '../interface/movie-model-api';
 
 export class MovieAPIService {
 
+  //Array that saves Data
+  daoAccess: DAO = new DAO();
+
   constructor(private http: HttpClient) {
   }
 
   baseURL: string = enviorment.API_LINK;
 
-  //Peliculas guardadas cambiar despues a POST method
-  movieSelectedlist: MovieModelAPI[]=[];
 
   //Get para las peliculas al ALI
   getMoviesApi(): Observable<PagesApi>{

@@ -7,21 +7,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PeliculasModule } from './modules/peliculas/peliculas.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ResenhasFormModule } from './modules/resenhas/resenhas-form.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    
   ],
   imports: [
     BrowserModule,
-    
-        HttpClientModule,
-        FormsModule,
-        CommonModule,
-        AppRoutingModule,
-        PeliculasModule,
+    HttpClientModule,
+    FormsModule,
+    CommonModule,
+    AppRoutingModule,
+    PeliculasModule,
+    BrowserAnimationsModule,
+    ResenhasFormModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

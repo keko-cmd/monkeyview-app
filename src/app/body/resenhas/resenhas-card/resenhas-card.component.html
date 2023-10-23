@@ -1,26 +1,39 @@
-<div class="container container-fluid mb-5" *ngIf="movieApiService">
-  <div class="card" *ngFor="let movie of movieApiService.movieSelectedlist">
+<div class="container container-fluid mb-5" *ngIf="movieApi">
+  <div class="card" *ngFor="let movie of movieApi.daoAccess.getSelectedMovie()">
     <div class="card-header">
       <div class="row">
-        <div class="col-6">
+        <div class="col-10 col-m-5">
           <div>
-            ID: {{movie.id}}  
+            ID: {{movie.id}}
           </div>
           <div class="card-body">
             <h4 class="card-title mb-3 ">Pelicula: {{movie.title}} </h4>
             <h5 class="card-subtitle mb-3">Descipcion: </h5>
             <p class="card-text"> {{movie.overview}}</p>
           </div>
-          <button class="" (click)="deleteMovie(movie.id)" class="btn btn-primary">Borrar</button>
-          <button class=""  class="btn btn-primary">Hacer Resena</button>
-          <!-- (click)="getMoviesModelByID(movie.id)" -->
         </div>
-        <div class=" col-6 right">
+        <div class=" col-2 right">
           <div>Fecha: {{movie.release_date}}</div>
-          <img class="card-img img-thumbnail"
-            src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+          <img class="card-img img-fluid" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-10">
+          <a class="btn btn-primary" (click)="openDiag(movie.id)">Hacer Resena 
+          </a>
+         
+        </div>
+        <div class="col-2">
+          <button class="" (click)="deleteMovie(movie.id)" class="btn btn-primary">Borrar</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="container container-fluid p-3 " *ngIf="movieApi.daoAccess.getSelectedMovie().length == 0">
+  <h4 class="text-center">No hay peliculas pendientes</h4>
+  <div>
+
+
+

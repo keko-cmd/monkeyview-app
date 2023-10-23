@@ -1,26 +1,31 @@
-<!-- <div class="container container-fluid">
-  <form  > 
-    //*ngIf="apiService.movieSelectedlist.length != 0"
+<div class="container container-fluid">
+  <form (ngSubmit)="onSubmit()"> 
+    <div *ngFor="let list of apiService.daoAccess.getSelectedMovie()">
+      <div>
+        <div>
+           <div class="form-group" >
+             <!-- Hidden Tags para guardar valores de DAO heredados workaround -->
+             <input hidden [(ngModel)]="movieForm.id" value="{{list.id}}"/>
+             <input hidden [(ngModel)]="movieForm.backdrop_path" value="{{list.backdrop_path}}"/>
+             <input hidden [(ngModel)]="movieForm.original_title" value="{{list.original_title}}"/>
+             <input hidden [(ngModel)]="movieForm.overview" value="{{list.overview}}"/>
+             <input hidden [(ngModel)]="movieForm.poster_path" value="{{list.poster_path}}"/>
+             <input hidden [(ngModel)]="movieForm.popularity" value="{{list.popularity}}"/>
+             <input hidden [(ngModel)]="movieForm.release_date" value="{{list.release_date}}"/>
+         
 
-
-
-    <div *ngFor="let list of apiService.movieSelectedlist">
-      <div *ngIf="list.id == apiService.movieSelect.id">
-        <div >
-          <div class="form-group">
             <label for="movieName">Nombre Pelicula: </label>
-            <input type="text" name="name" [(ngModel)]="model.title" disabled class="form-control" value='{{list.title}}'
-              id="movieName" placeholder="{{list.title}}">
+            <input type="text" name="name" [(ngModel)]="movieForm.title" disabled class="form-control" value='{{list.title}}' id="movieName" placeholder="{{list.title}}">         
           </div>
         </div>
         <div class="form-group">
           <label for="movieEmail">Correo:</label>
-          <input type="email" name="email" [(ngModel)]="model.email" class="form-control" id="movieEmail"
+          <input type="email" name="email" [(ngModel)]="movieForm.email" class="form-control" id="movieEmail"
             placeholder="name@example.com">
         </div>
         <div class="form-group">
           <label for="movieRate">Rating: </label>
-          <select class="form-control" id="movieRate" name="rating" [(ngModel)]="model.rating">
+          <select class="form-control" id="movieRate" name="rating" [(ngModel)]="movieForm.rating">
             <option selected value="">Seleccione una opcion...</option>
             <option *ngFor="let number of ratingArray" value="{{number}}">{{number}}</option>
           </select>
@@ -28,12 +33,14 @@
         <div class="form-group">
           <label for="movieComment">Comentarios:</label>
           <textarea class="form-control" id="movieComment" placeholder="Ingrese sus comentarios" rows="4"
-            name="comments" [(ngModel)]="model.comentarios"></textarea>
+            name="comments" [(ngModel)]="movieForm.comentarios"></textarea>
         </div>
         <div class="pt-3">
-          <button type="submit" class="btn btn-primary">Agregar</button>
+          <button type="submit" class="btn btn-primary" >Agregar</button>
         </div>
       </div>
     </div>
   </form>
-</div> -->
+</div> 
+
+ 

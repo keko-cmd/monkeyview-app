@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ResenhasBodyComponent } from 'src/app/body/resenhas/resenhas-body/resenhas-body.component';
-
-
+import { CardScrollComponent } from 'src/app/body/resenhas/resenhas-card/card-scroll/card-scroll.component';
+import { ResenhasFormComponent } from 'src/app/body/resenhas/resenhas-form/resenhas-form.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ResenhasBodyComponent
-  }
+{
+    path: '', component: CardScrollComponent,
+    children:[
+      {
+       path : 'formulario/:id',
+       component: ResenhasFormComponent
+      },
+    ]
+}
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+imports: [RouterModule.forChild(routes), ],
+exports: [RouterModule]
 })
-
-
 export class ResenhasRoutingModule { }

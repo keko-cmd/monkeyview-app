@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+//import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription, map } from 'rxjs';
 import { ResenhasModel } from 'src/app/interface/resenhas-model';
-import { ListadoVistoService } from 'src/app/services/listavisto.service';
 import { MovieAPIService } from 'src/app/services/movie-api.service';
+
+
 
 @Component({
   selector: 'app-resenhas-form',
@@ -9,36 +14,48 @@ import { MovieAPIService } from 'src/app/services/movie-api.service';
   styleUrls: ['./resenhas-form.component.css']
 })
 
-export class ResenhasFormComponent implements OnInit {
+
+
+export class ResenhasFormComponent implements OnInit{
+  //routeQueryParams$: Subscription;
+  ratingArray: number[] = [1, 2, 3, 4, 5]
+
+ 
+
+  movieForm: ResenhasModel = {
+    id: 0,
+    backdrop_path: '',
+    original_title: '',
+    overview: '',
+    poster_path: '',
+    popularity: 0,
+
+    title: '',
+    email: '',
+    rating: 0,
+    comentarios: '',
+    release_date: ''
+  }
+
+  //Constructor calls the service 
+  constructor(public apiService: MovieAPIService) {
+  }
+
+  ngOnInit(): void {
+    
+  }
 
   
-//Constructor calls the service 
-constructor(public apiService: MovieAPIService, public listaVisto: ListadoVistoService){}
+  // ngOnDestroy() {
+  //   this.routeQueryParams$.unsubscribe()
+  // }
 
-ngOnInit() {
-}
+  onSubmit(){
+    console.log('meow')
+  }
 
-ratingArray: number[] = [1, 2, 3, 5,5]
-
-model: ResenhasModel = {
-  comentarios: '',
-  email: '',
-  rating: 0,
-  backdrop_path: '',
-  id: 0,
-  title: '',
-  original_title: '',
-  overview: '',
-  poster_path: '',
-  popularity: 0,
-  release_date: ''
-}
-
-onSubmit(){
-  // this.apiService.crearPelicula(this.model).subscribe(
-  //   (response:ResenhasModel) => console.log(response)
-  // );
-        console.log(this.model)
-}
+ 
 
 }
+
+
