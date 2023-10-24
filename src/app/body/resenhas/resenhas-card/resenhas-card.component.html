@@ -1,5 +1,5 @@
 <div class="container container-fluid mb-5" *ngIf="movieApi">
-  <div class="card" *ngFor="let movie of movieApi.daoAccess.getSelectedMovie()">
+  <div class="card" *ngFor="let movie of movieApi.dtoAccess.getSelectedMovie()">
     <div class="card-header">
       <div class="row">
         <div class="col-10 col-m-5">
@@ -31,7 +31,7 @@
   </div>
 </div>
 
-<div class="container container-fluid p-3 " *ngIf="movieApi.daoAccess.getSelectedMovie().length == 0">
+<div class="container container-fluid p-3 " *ngIf="movieApi.dtoAccess.getSelectedMovie().length == 0">
   <h4 class="text-center">No hay peliculas pendientes</h4>
   <div>
 

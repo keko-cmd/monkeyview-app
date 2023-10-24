@@ -1,46 +1,46 @@
 <div class="container container-fluid">
-  <form (ngSubmit)="onSubmit()"> 
-    <div *ngFor="let list of apiService.daoAccess.getSelectedMovie()">
-      <div>
+  <div *ngFor="let list of apiService.dtoAccess.getSelectedMovie()">
+    <div *ngIf="list.id == movieForm.id">
+      <form (ngSubmit)="onSubmit(movieForm)">
         <div>
-           <div class="form-group" >
-             <!-- Hidden Tags para guardar valores de DAO heredados workaround -->
-             <input hidden [(ngModel)]="movieForm.id" value="{{list.id}}"/>
-             <input hidden [(ngModel)]="movieForm.backdrop_path" value="{{list.backdrop_path}}"/>
-             <input hidden [(ngModel)]="movieForm.original_title" value="{{list.original_title}}"/>
-             <input hidden [(ngModel)]="movieForm.overview" value="{{list.overview}}"/>
-             <input hidden [(ngModel)]="movieForm.poster_path" value="{{list.poster_path}}"/>
-             <input hidden [(ngModel)]="movieForm.popularity" value="{{list.popularity}}"/>
-             <input hidden [(ngModel)]="movieForm.release_date" value="{{list.release_date}}"/>
-         
-
+          <div class="form-group">
             <label for="movieName">Nombre Pelicula: </label>
-            <input type="text" name="name" [(ngModel)]="movieForm.title" disabled class="form-control" value='{{list.title}}' id="movieName" placeholder="{{list.title}}">         
+            <input class="form-control" type="text" [(ngModel)]="movieForm.title" name="title" #title="ngModel" disabled
+              (value)='list.title' id="movieName" placeholder="{{list.title}}">
           </div>
         </div>
         <div class="form-group">
-          <label for="movieEmail">Correo:</label>
-          <input type="email" name="email" [(ngModel)]="movieForm.email" class="form-control" id="movieEmail"
-            placeholder="name@example.com">
+          <label for="email">Correo:</label>
+          <input class="form-control" type="text" [(ngModel)]="movieForm.email" name="email"
+            placeholder="name@example.com" required
+            pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" #email=ngModel />
+          <div [hidden]="email.valid || email.pristine" >
+            <div class="alert alert-danger"  *ngIf="email.errors?.['pattern']">Formato de correo incorrecto</div>
+          </div>
         </div>
         <div class="form-group">
-          <label for="movieRate">Rating: </label>
-          <select class="form-control" id="movieRate" name="rating" [(ngModel)]="movieForm.rating">
-            <option selected value="">Seleccione una opcion...</option>
+          <label for="rating">Rating: </label>
+          <select required class="form-control" name="rating" #rating="ngModel" [(ngModel)]="movieForm.rating" >
+            <!-- <option  [ngValue]="null" selected disabled>Seleccione</option> -->
             <option *ngFor="let number of ratingArray" value="{{number}}">{{number}}</option>
           </select>
+          <div [hidden]="rating.value != 0" >
+            <div class="alert alert-danger">Seleccione una opcion</div>
+          </div>
         </div>
         <div class="form-group">
-          <label for="movieComment">Comentarios:</label>
-          <textarea class="form-control" id="movieComment" placeholder="Ingrese sus comentarios" rows="4"
-            name="comments" [(ngModel)]="movieForm.comentarios"></textarea>
+          <label for="comentarios">Comentarios:</label>
+          <textarea class="form-control" placeholder="Ingrese sus comentarios" pattern="^(.{10,100})$" rows="4" name="comentarios" #comentarios="ngModel"
+            [(ngModel)]="movieForm.comentarios"></textarea>
+            <div [hidden]="comentarios.valid || comentarios.pristine" >
+              <div class="alert alert-danger"  *ngIf="comentarios.errors?.['pattern']">Minimo 10 caracteres, maximo 100</div>
+            </div>
         </div>
-        <div class="pt-3">
-          <button type="submit" class="btn btn-primary" >Agregar</button>
+        <div class="pt-3" >
+          <button [disabled]="email.invalid || comentarios.invalid || rating.value == 0" type="submit" class="btn btn-primary">Agregar</button>
         </div>
-      </div>
-    </div>
-  </form>
-</div> 
 
- 
+      </form>
+    </div>
+  </div>
+</div>

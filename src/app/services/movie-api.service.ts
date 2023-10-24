@@ -3,7 +3,7 @@ import { enviorment } from 'src/enviorment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { MovieModelAPI, PagesApi } from '../interface/movie-model-api';
-import { DAO } from '../DTO/DTO-model';
+import { DTO } from '../DTO/DTO-model';
 
 
 @Injectable({
@@ -16,7 +16,7 @@ import { DAO } from '../DTO/DTO-model';
 export class MovieAPIService {
 
   //Array that saves Data
-  daoAccess: DAO = new DAO();
+  dtoAccess: DTO = new DTO();
 
   constructor(private http: HttpClient) {
   }

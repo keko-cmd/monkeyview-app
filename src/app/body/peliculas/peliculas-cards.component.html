@@ -1,7 +1,7 @@
 
 
   <div class="container">
-  <div class="card m-5 shadow mb-3" *ngFor="let movie of movieApi.daoAccess.getMoviesList()">
+  <div class="card m-5 shadow mb-3" *ngFor="let movie of movieApi.dtoAccess.getMoviesList()">
       <img class="img card-img-top shadow" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt=" Post">
     <div class="card-body">
       <h5 class="card-title">{{movie.title}}: {{movie.release_date}}</h5>
@@ -12,7 +12,7 @@
           <p>{{movie.overview}}</p>
         </div>
       </div>
-      <button class="btn btn-primary m-3" (click)="addWatchlist(movie.id)" > Agregar Pelicula</button>
+      <button class="btn btn-primary m-3"  (click)="addWatchlist(movie.id);" > Agregar Pelicula</button>
       
     </div>
   </div>

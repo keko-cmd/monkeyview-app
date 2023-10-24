@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data } from '@angular/router';
 import { Observable, map } from 'rxjs';
-import { DAO } from 'src/app/DTO/DTO-model';
+import { DTO } from 'src/app/DTO/DTO-model';
 import { MovieModelAPI, PagesApi } from 'src/app/interface/movie-model-api';
 import { MovieAPIService } from 'src/app/services/movie-api.service';
 import Swal from 'sweetalert2';
@@ -20,7 +20,6 @@ export class PeliculasCardsComponent implements OnInit {
 
   }
 
-  
 
   ngOnInit(): void {
     
@@ -48,7 +47,7 @@ listMovies(){
         };
       });
     })).subscribe((movie) => {
-      this.movieApi.daoAccess.setMovieList(movie)
+      this.movieApi.dtoAccess.setMovieList(movie)
       // console.log(this.moviesArray)
     }); 
 
@@ -56,11 +55,12 @@ listMovies(){
 
   addWatchlist(id: number) {
   
-    for (let movie of this.movieApi.daoAccess.getMoviesList()) {
+    for (let movie of this.movieApi.dtoAccess.getMoviesList()) {
 
       if (movie.id === id) {
-        this.movieApi.daoAccess.pushSelectedMovie(movie);
-        console.log(this.movieApi.daoAccess.getSelectedMovie());
+     
+        this.movieApi.dtoAccess.pushSelectedMovie(movie);
+        console.log(this.movieApi.dtoAccess.getSelectedMovie());
       }
     }
     Swal.fire({

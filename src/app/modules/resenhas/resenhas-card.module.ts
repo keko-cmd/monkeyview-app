@@ -4,7 +4,7 @@ import { ResenhasCardComponent } from 'src/app/body/resenhas/resenhas-card/resen
 import { CardScrollComponent } from 'src/app/body/resenhas/resenhas-card/card-scroll/card-scroll.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
-import { ResenhasRoutingModule } from './resenhas-routing.module';
+import { AppRoutingModule } from 'src/app/app.routing.module';
 
 
 
@@ -16,7 +16,7 @@ import { ResenhasRoutingModule } from './resenhas-routing.module';
   imports: [
     CommonModule,
     MatDialogModule,
-    ResenhasRoutingModule,
+  AppRoutingModule,
     RouterModule
   ],
   exports: [ResenhasCardComponent,

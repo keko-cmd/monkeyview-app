@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PeliculasCardsComponent } from './body/peliculas/peliculas-cards.component';
 import { ResenhasFormComponent } from './body/resenhas/resenhas-form/resenhas-form.component';
-import { ResenhasCardComponent } from './body/resenhas/resenhas-card/resenhas-card.component';
-import { ResenhasRoutingModule } from './modules/resenhas/resenhas-routing.module';
+//import { ResenhasCardComponent } from './body/resenhas/resenhas-card/resenhas-card.component';
+//import { ResenhasRoutingModule } from './modules/resenhas/resenhas-routing.module';
 import { CardScrollComponent } from './body/resenhas/resenhas-card/card-scroll/card-scroll.component';
 
 
@@ -16,6 +16,11 @@ const routes: Routes = [
       { path: '', component: PeliculasCardsComponent },
       {
         path: 'hacer-reseñas', component: CardScrollComponent,
+        children: [
+          {path: 'formulario', component: ResenhasFormComponent,
+              children: [{ path: ':id', component: ResenhasFormComponent}]
+        }
+        ]
         //loadChildren: () => import('./modules/resenhas/resenhas-card.module').then(m => m.ResenhasCardModule)
       },
       {
@@ -34,7 +39,7 @@ const routes: Routes = [
 @NgModule({
 
 
-  imports: [RouterModule.forRoot(routes), ResenhasRoutingModule],
+imports: [RouterModule.forRoot(routes), /*ResenhasRoutingModule*/],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

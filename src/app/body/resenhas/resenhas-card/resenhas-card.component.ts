@@ -15,7 +15,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 export class ResenhasCardComponent implements OnInit{
 
   constructor(public movieApi: MovieAPIService, private route: Router, public dialog: MatDialog){
-     // this.dialog.open(ResenhasFormComponent);
+     
   }
 
 
@@ -24,29 +24,23 @@ export class ResenhasCardComponent implements OnInit{
   }
 
   openDiag(id: number){
-    this.dialog.open(ResenhasFormComponent);
-    this.route.navigate(['/formulario/', id] );
+    this.dialog.open(ResenhasFormComponent, {
+      data: { _id: id },
+      height: '400px',
+      width: '600px',
+    });
+    this.route.navigate(['inicio/hacer-reseñas/formulario/', id] );
   }
 
 //Borra la pelicula del arreglo
   deleteMovie(id: number) {
-    for (let movie of this.movieApi.daoAccess.getSelectedMovie()) {
+    for (let movie of this.movieApi.dtoAccess.getSelectedMovie()) {
       if (movie.id === id) {
-        let index = this.movieApi.daoAccess.getSelectedMovie().indexOf(movie);
-        this.movieApi.daoAccess.getSelectedMovie().splice(index, 1);
+        let index = this.movieApi.dtoAccess.getSelectedMovie().indexOf(movie);
+        this.movieApi.dtoAccess.getSelectedMovie().splice(index, 1);
       }
     }
   }
-
-  // saveMovieID(id: number){
-  //   for (let movie of this.movieApi.daoAccess.getSelectedMovie()) {
-  //     if (movie.id === id) {
-  //       this.movieApi.daoAccess.setClickedMovie(movie);
-       
-  //     }
-  //   }
-    
-  // }
 
 }
 

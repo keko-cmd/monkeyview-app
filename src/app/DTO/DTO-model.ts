@@ -1,6 +1,9 @@
 import { MovieModelAPI } from "../interface/movie-model-api";
+import { ResenhasModel } from "../interface/resenhas-model";
 
-export class DAO {
+export class DTO {
+
+    //Pelicula agarrado de la API
     private moviesArray: MovieModelAPI[] = [];
     getMoviesList(): MovieModelAPI[] {
         return this.moviesArray;
@@ -9,6 +12,7 @@ export class DAO {
         this.moviesArray = movie;
     }
 
+    //Peliculas Seleccionado de API
     private movieSelectedlist: MovieModelAPI[] = [];
     getSelectedMovie(): MovieModelAPI[] {
         return this.movieSelectedlist;
@@ -20,12 +24,16 @@ export class DAO {
         this.movieSelectedlist.push(movie);
     }
 
-    private movieSelected!: MovieModelAPI;
-    getClickedMovie(): MovieModelAPI {
-        return this.movieSelected;
+    //Resenhas ya hechas
+    private resenhasList: ResenhasModel[] = [];
+    getResenhasList(): ResenhasModel[] {
+        return this.resenhasList;
     }
-    setClickedMovie(movie: MovieModelAPI) {
-        this.movieSelected = movie;
+    setResenhasList(movie: ResenhasModel[]) {
+        this.resenhasList = movie;
+    }
+    pushResenhaMovie(movie: ResenhasModel) {
+        this.resenhasList.push(movie);
     }
 
 }
